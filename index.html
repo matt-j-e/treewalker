@@ -25,10 +25,10 @@
   <script>
 
     nextNode = function(node) {
-      if (node.nextSibling) {
-        node = node.nextSibling;
-      } else if (node.hasChildNodes) {
+      if (node.hasChildNodes) {
         node = node.firstChild;
+      } else if (node.nextSibling) {
+        node = node.nextSibling;
       } else {
         node = null;
       }
