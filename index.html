@@ -26,15 +26,17 @@
 
     nextNode = function(node) {
       if (node.hasChildNodes()) {
-        console.log("Child")
-        return node.firstChild;
+        node = node.firstChild;
+      } else if (node.nextSibling) {
+        node = node.nextSibling;
+      } else if (node.parentNode.nextSibling) {
+        node = node.parentNode.nextSibling;
+      } else if (node.parentNode.parentNode.nextSibling) {
+        node = node.parentNode.parentNode.nextSibling;
+      } else {
+        node = null;
       }
-      
-      if (node.nextSibling) {
-        console.log("Sibling")
-        return node.nextSibling;
-      } 
-      return null
+      return node;
     }
 
     let node = document.body;
